@@ -1,0 +1,197 @@
+        /* CSS Reset & Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background-color: #111111; /* Deep black background */
+            color: #a9a9a9;
+            padding: 70px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-container {
+            max-width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding-right: 20px;
+        }
+
+        /* Brand Column */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .brand-logo i {
+            color: #f36103; /* Brand Orange */
+            font-size: 32px;
+            margin-right: 12px;
+        }
+
+        .brand-logo h2 {
+            color: #ffffff;
+            font-size: 26px;
+            letter-spacing: 3px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .footer-col p {
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .follow-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            margin-right: 20px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #f36103;
+        }
+
+        /* Headers for other columns */
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* Blog Column */
+        .blog-list {
+            list-style: none;
+        }
+
+        .blog-list li {
+            margin-bottom: 20px;
+        }
+
+        .blog-list a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-list a:hover {
+            color: #f36103;
+        }
+
+        .blog-list span {
+            font-size: 12px;
+            color: #f36103;
+            text-transform: uppercase;
+        }
+
+        .blog-list span i {
+            margin-right: 5px;
+        }
+
+        /* Program Column */
+        .program-list {
+            list-style: none;
+        }
+
+        .program-list li {
+            margin-bottom: 15px;
+        }
+
+        .program-list a {
+            color: #a9a9a9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .program-list a:hover {
+            color: #f36103;
+        }
+
+        /* Get Info Column */
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            color: #f36103;
+            font-size: 16px;
+            margin-top: 4px;
+            width: 25px;
+        }
+
+        .info-item div {
+            flex: 1;
+        }
+
+        .info-item span {
+            color: #ffffff;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .info-item p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Copyright Section */
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #262626;
+            padding: 25px 15px;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .footer-bottom span {
+            color: #f36103;
+        }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            .footer-col {
+                flex: 1 1 100%; /* Stacks columns on tablet/mobile */
+                padding-right: 0;
+            }
+        }

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymLife Pro - Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+        body { font-family: 'Oswald', sans-serif; overflow-x: hidden; }
+        
+        /* Smooth fade for the background slider */
+        .hero-bg {
+            transition: background-image 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Navbar shadow and blur effect on scroll */
+        .nav-scrolled {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(234, 88, 12, 0.4);
+        }
+
+        /* Side Nav Animation */
+        #sideNav {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Pricing Card Skew Effect */
+        .pricing-card {
+            border: 1px solid #262626;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            border-color: #ea580c;
+        }
+
+        /* Top and Bottom Angle Cuts */
+        .pricing-card::before {
+            content: "";
+            position: absolute;
+            top: -1px; left: -1px;
+            width: 100%; height: 100%;
+            border: 1px solid transparent;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-4 transition-all duration-300">
+        <div class="flex items-center gap-2">
+            <div class="text-orange-500 text-3xl"><i class="fas fa-dumbbell"></i></div>
+            <span class="text-3xl font-bold tracking-tighter italic uppercase">Gym<span class="text-orange-600">Life</span></span>
+        </div>
+
+        <!-- Desktop Menu: Hidden on Mobile -->
+        <ul class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest">
+            <li><a href="index.html" class="text-orange-500 hover:text-white transition">Home</a></li>
+            <li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
+            <li><a href="service.html" class="hover:text-orange-500 transition">Services</a></li>
+            <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center space-x-5">
+            <!-- SOCIAL MEDIA ICONS (Replaced Search Icon) -->
+            <div class="hidden md:flex items-center space-x-4 text-sm">
+                <a href="#" class="hover:text-orange-500 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-orange-500 transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-orange-500 transition"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <!-- Hamburger: Visible ONLY on Mobile (md:hidden) -->
+            <button onclick="toggleNav()" class="md:hidden text-2xl text-orange-500 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE SIDEBAR -->
+    <div id="sideNav" class="fixed top-0 right-0 h-full w-80 bg-[#0a0a0a] z-[60] transform translate-x-full flex flex-col p-10 shadow-2xl md:hidden">
+        <button onclick="toggleNav()" class="self-end text-3xl mb-10 hover:text-orange-500">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="space-y-6 text-2xl font-bold uppercase tracking-widest">
+            <li><a href="index.html" onclick="toggleNav()" class="hover:text-orange-500">Home</a></li>
+            <li><a href="about.html" onclick="toggleNav()" class="hover:text-orange-500">About Us</a></li>
+            <li><a href="service.html" onclick="toggleNav()" class="hover:text-orange-500">Services</a></li>
+            <li><a href="contact.html" onclick="toggleNav()" class="hover:text-orange-500">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- START: NEW HEADER & INTRO SECTION -->
+    <header class="relative h-[60vh] md:h-[70vh] flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop');">
+        <div class="text-center">
+            <h1 class="text-6xl md:text-8xl font-bold uppercase italic tracking-tighter mb-4">Services</h1>
+            <div class="flex items-center justify-center gap-2 text-lg font-bold uppercase tracking-widest">
+                <a href="#" class="hover:text-orange-500 transition">Home</a>
+                <span class="text-gray-400">/</span>
+                <span class="text-orange-500">Services</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-[#0a0a0a] py-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h5 class="text-orange-500 uppercase tracking-[0.3em] font-bold mb-4">What we do?</h5>
+            <h2 class="text-4xl md:text-6xl font-bold uppercase italic tracking-tight">Push Your Limits Forward</h2>
+        </div>
+    </section>
+
+    <!-- NEW SERVICES GRID SECTION -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-black">
+        <!-- Row 1, Part 1 -->
+        <div class="h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Personal Training" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <div class="h-80 bg-zinc-900 p-10 flex flex-col justify-center">
+            <h3 class="text-2xl font-bold uppercase mb-4">Personal training</h3>
+            <p class="text-gray-400 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut dolore facilisis.</p>
+            <a href="#" class="text-white uppercase font-bold text-xs tracking-widest flex items-center gap-2 group">
+                Explore <span class="text-orange-500 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+        <!-- Row 1, Part 2 -->
+        <div class="h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=80" alt="Group Classes" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <div class="h-80 bg-zinc-900 p-10 flex flex-col justify-center border-l border-zinc-800">
+            <h3 class="text-2xl font-bold uppercase mb-4">Group fitness classes</h3>
+            <p class="text-gray-400 text-sm mb-6 leading-relaxed">Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus.</p>
+            <a href="#" class="text-white uppercase font-bold text-xs tracking-widest flex items-center gap-2 group">
+                Explore <span class="text-orange-500 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+
+        <!-- Row 2 (Flipped Pattern) -->
+        <div class="h-80 bg-zinc-900 p-10 flex flex-col justify-center">
+            <h3 class="text-2xl font-bold uppercase mb-4">Strength training</h3>
+            <p class="text-gray-400 text-sm mb-6 leading-relaxed">Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus.</p>
+            <a href="#" class="text-white uppercase font-bold text-xs tracking-widest flex items-center gap-2 group">
+                Explore <span class="text-orange-500 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+        <div class="h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef03a94e77?auto=format&fit=crop&w=600&q=80" alt="Strength Training" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <div class="h-80 bg-zinc-900 p-10 flex flex-col justify-center border-l border-zinc-800">
+            <h3 class="text-2xl font-bold uppercase mb-4">Body building</h3>
+            <p class="text-gray-400 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut dolore facilisis.</p>
+            <a href="#" class="text-white uppercase font-bold text-xs tracking-widest flex items-center gap-2 group">
+                Explore <span class="text-orange-500 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+        <div class="h-80 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80" alt="Body Building" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+    </section>
+    <!-- END: NEW SERVICES GRID SECTION -->
+
+    <!-- PRICING SECTION -->
+    <section class="bg-[#0a0a0a] py-24 px-6">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h5 class="text-orange-500 uppercase tracking-[0.3em] font-bold mb-4">Our Plan</h5>
+            <h2 class="text-4xl md:text-5xl font-bold uppercase italic tracking-tight">Choose Your Pricing Plan</h2>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="pricing-card bg-black p-12 text-center flex flex-col items-center">
+                <h3 class="text-2xl font-bold uppercase mb-6">Class drop-in</h3>
+                <div class="text-orange-500 mb-2">
+                    <span class="text-4xl font-bold">$</span>
+                    <span class="text-7xl font-bold">39.0</span>
+                </div>
+                <span class="text-gray-500 uppercase font-bold tracking-widest text-sm mb-10">Single Class</span>
+                <ul class="space-y-4 text-gray-400 mb-12">
+                    <li>Free riding</li>
+                    <li>Unlimited equipments</li>
+                    <li>Personal trainer</li>
+                    <li>Weight losing classes</li>
+                    <li>Month to mouth</li>
+                    <li>No time restriction</li>
+                </ul>
+                <button class="bg-zinc-800 hover:bg-orange-600 transition-colors w-full py-4 uppercase font-bold tracking-widest">Enroll Now</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="pricing-card bg-black p-12 text-center flex flex-col items-center border-orange-600">
+                <h3 class="text-2xl font-bold uppercase mb-6">12 Month unlimited</h3>
+                <div class="text-orange-500 mb-2">
+                    <span class="text-4xl font-bold">$</span>
+                    <span class="text-7xl font-bold">99.0</span>
+                </div>
+                <span class="text-gray-500 uppercase font-bold tracking-widest text-sm mb-10">Single Class</span>
+                <ul class="space-y-4 text-gray-400 mb-12">
+                    <li>Free riding</li>
+                    <li>Unlimited equipments</li>
+                    <li>Personal trainer</li>
+                    <li>Weight losing classes</li>
+                    <li>Month to mouth</li>
+                    <li>No time restriction</li>
+                </ul>
+                <button class="bg-zinc-800 hover:bg-orange-600 transition-colors w-full py-4 uppercase font-bold tracking-widest">Enroll Now</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="pricing-card bg-black p-12 text-center flex flex-col items-center">
+                <h3 class="text-2xl font-bold uppercase mb-6">6 Month unlimited</h3>
+                <div class="text-orange-500 mb-2">
+                    <span class="text-4xl font-bold">$</span>
+                    <span class="text-7xl font-bold">59.0</span>
+                </div>
+                <span class="text-gray-500 uppercase font-bold tracking-widest text-sm mb-10">Single Class</span>
+                <ul class="space-y-4 text-gray-400 mb-12">
+                    <li>Free riding</li>
+                    <li>Unlimited equipments</li>
+                    <li>Personal trainer</li>
+                    <li>Weight losing classes</li>
+                    <li>Month to mouth</li>
+                    <li>No time restriction</li>
+                </ul>
+                <button class="bg-zinc-800 hover:bg-orange-600 transition-colors w-full py-4 uppercase font-bold tracking-widest">Enroll Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-black py-20 px-6 md:px-32 border-t border-zinc-900">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <!-- Brand Column -->
+            <div class="md:col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="text-orange-500 text-2xl"><i class="fas fa-dumbbell"></i></div>
+                    <span class="text-4xl font-bold uppercase italic">Gym<span class="text-orange-600">Life</span></span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua endisse ultrices gravida lorem.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Useful Links -->
+            <div>
+                <h4 class="text-xl font-bold uppercase mb-8">Useful links</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li><a href="#" class="hover:text-orange-500 transition">About</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition">Blog</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition">Classes</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div>
+                <h4 class="text-xl font-bold uppercase mb-8">Support</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li><a href="#" class="hover:text-orange-500 transition">Login</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition">My account</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition">Subscribe</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Tips & Guides -->
+            <div>
+                <h4 class="text-xl font-bold uppercase mb-8">Tips & Guides</h4>
+                <div class="space-y-6">
+                    <div>
+                        <a href="#" class="text-gray-200 hover:text-orange-500 font-bold block mb-1">Physical fitness may help prevent depression, anxiety</a>
+                        <p class="text-xs text-gray-500">3 min read | 20 Comment</p>
+                    </div>
+                    <div class="border-t border-zinc-800 pt-6">
+                        <a href="#" class="text-gray-200 hover:text-orange-500 font-bold block mb-1">Fitness: The best exercise to lose belly fat and tone up...</a>
+                        <p class="text-xs text-gray-500">3 min read | 20 Comment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 pt-8 border-t border-zinc-900 text-center text-gray-500 text-sm">
+            <p>Copyright ©2026 All rights reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const sideNav = document.getElementById('sideNav');
+            sideNav.classList.toggle('translate-x-full');
+        }
+
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled', 'py-2');
+            } else {
+                nav.classList.remove('nav-scrolled', 'py-2');
+            }
+        };
+    </script>
+</body>
+</html>
